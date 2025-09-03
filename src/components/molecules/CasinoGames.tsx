@@ -1,4 +1,3 @@
-// src/components/organisms/CasinoGames.tsx
 import React, { useState, useMemo } from "react";
 import type { CasinoGame } from "../../types/types";
 import GameCard from "../atoms/GameCard";
@@ -10,15 +9,22 @@ interface Props {
 }
 
 const CasinoGames: React.FC<Props> = ({ games }) => {
+  // State for search input (text entered by user)
   const [search, setSearch] = useState("");
+
+  // State for selected categories (e.g., "slots")
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
+  // Memoized filtered list of games based on search and category filters
   const filteredGames = useMemo(() => {
     return games.filter((game) => {
+      // Check if the game's title matches the search input (case-insensitive)
       const matchesSearch = game.title
         .toLowerCase()
         .includes(search.toLowerCase());
 
+      // Check if the game belongs to any selected category
+      // If no category is selected, all games pass
       const matchesCategory =
         selectedCategories.length === 0 ||
         game.categories.some((cat: string) => selectedCategories.includes(cat));
@@ -27,11 +33,13 @@ const CasinoGames: React.FC<Props> = ({ games }) => {
     });
   }, [games, search, selectedCategories]);
 
+  // Toggle category selection when user clicks a category button
   const toggleCategory = (category: string) => {
-    setSelectedCategories((prev) =>
-      prev.includes(category)
-        ? prev.filter((c) => c !== category)
-        : [...prev, category]
+    setSelectedCategories(
+      (prev) =>
+        prev.includes(category)
+          ? prev.filter((c) => c !== category) // Remove category if already selected
+          : [...prev, category] // Add category if not selected
     );
   };
 
@@ -52,7 +60,7 @@ const CasinoGames: React.FC<Props> = ({ games }) => {
             onClick={() => toggleCategory(cat)}
             className={`px-3 py-1 rounded-full border ${
               selectedCategories.includes(cat)
-                ? "bg-blue-600 text-white border-blue-600"
+                ? "bg-red-600 text-white border-red-600"
                 : "bg-gray-200 text-gray-900 border-gray-300"
             }`}
           >
@@ -66,6 +74,7 @@ const CasinoGames: React.FC<Props> = ({ games }) => {
         {filteredGames.map((game) => (
           <GameCard key={game.id} game={game} />
         ))}
+        {/* Display message if no games match filters/search */}
         {filteredGames.length === 0 && (
           <p className="text-center col-span-full text-gray-500">
             No games match your search/filter.

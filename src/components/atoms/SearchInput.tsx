@@ -1,4 +1,3 @@
-// src/components/atoms/SearchInput.tsx
 import React from "react";
 
 interface SearchInputProps {
@@ -13,6 +12,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   placeholder = "Search...",
 }) => {
   return (
+    // Input element for text search
     <input
       type="text"
       value={value}

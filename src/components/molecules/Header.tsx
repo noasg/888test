@@ -1,4 +1,3 @@
-// src/components/atoms/Header.tsx
 import React from "react";
 import type { Section } from "../../types/types";
 import NavButton from "../atoms/NavButton";
@@ -19,6 +18,7 @@ const Header: React.FC<Props> = ({ section, setSection }) => {
 
         <nav className="flex gap-4">
           {SECTIONS.map((sec) => (
+            // Render a NavButton for each section
             <NavButton
               key={sec}
               label={

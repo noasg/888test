@@ -1,4 +1,3 @@
-// src/components/molecules/PromotionCard.tsx
 import React, { useState } from "react";
 import type { Promotion } from "../../types/types";
 
@@ -8,7 +7,7 @@ interface Props {
 
 const PromotionCard: React.FC<Props> = ({ promo }) => {
   const [expanded, setExpanded] = useState(false);
-
+  // Tracks whether the full content is shown or just the snippet
   return (
     <div className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition">
       <img

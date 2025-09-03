@@ -1,5 +1,5 @@
 export interface CasinoGame {
-  categories: any;
+  categories: Array<string>;
   id: string;
   title: string;
   provider: string;

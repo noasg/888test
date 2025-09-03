@@ -2,8 +2,8 @@ import React from "react";
 import type { Section } from "../../types/types";
 
 interface Props {
-  section: Section;
-  setSection: (section: Section) => void;
+  section: Section; // Currently selected section
+  setSection: (section: Section) => void; // Function to update selected section
 }
 
 const NavBar: React.FC<Props> = ({ section, setSection }) => (
