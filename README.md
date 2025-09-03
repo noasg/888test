@@ -77,6 +77,25 @@ npm build — Build the app for production.
 
 npm test — Run Jest tests in watch mode.
 
+## Design Choices & Project Structure
+
+I structured this casino app to be **modular**, separating components by functionality using the **Atomic Design** methodology:
+
+- **Atoms:** Basic, reusable UI elements such as buttons, inputs, and cards.
+- **Molecules:** Groups of atoms forming more complex components, e.g., headers, news cards, promotion cards.
+- **Organisms:** Larger sections that combine molecules and atoms, like the Casino Games grid, Promotions list, and News list.
+
+This approach makes the app **modular, reusable, and easy to maintain**, which is especially helpful for dynamic content and interactive features like search, filtering, and expandable cards.
+
+### Constants & Configuration
+
+I created a separate file for constants (`utils/constants.ts`) to store values that **should not change often**, such as:
+
+- API endpoints (e.g., `CASINO_CONTENT_ENDPOINT`)
+- Menu sections (e.g., `"games"`, `"promotions"`, `"news"`)
+
+Separating these constants makes the code **cleaner, easier to update, and more maintainable**.
+
 npm lint — Run ESLint for code quality checks.
 
 
